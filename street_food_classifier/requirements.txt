@@ -19,7 +19,3 @@ pathlib2>=2.3.0
 pytest>=7.0.0
 jupyter>=1.0.0
 ipykernel>=6.0.0
-
-# Optional: Advanced ML
-# tensorboard>=2.8.0
-# wandb>=0.12.0

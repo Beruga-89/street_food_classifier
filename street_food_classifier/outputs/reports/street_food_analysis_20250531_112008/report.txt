@@ -1,7 +1,0 @@
-EVALUATION REPORT
-==================================================
-
-Report Name: street_food_analysis
-Generated: 20250531_112008
-Number of Models: 0
-

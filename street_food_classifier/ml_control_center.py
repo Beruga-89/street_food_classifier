@@ -306,21 +306,6 @@ class MLControlCenter:
 # Erstelle globales Control Center
 ml = MLControlCenter()
 
-# === CONVENIENCE FUNCTIONS (für Kompatibilität) ===
-
-def quick_status():
-    """Quick Status über Control Center."""
-    return ml.status()
-
-def quick_train(architecture='resnet18', epochs=5):
-    """Quick Training über Control Center."""
-    history, exp_id = ml.train(architecture, epochs)
-    return history
-
-def quick_evaluate(model_name=None):
-    """Quick Evaluation über Control Center."""
-    return ml.evaluate(model_name, visualizations=False)
-
 # === USAGE EXAMPLES ===
 
 print(f"""
