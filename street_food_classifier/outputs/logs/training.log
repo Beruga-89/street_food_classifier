@@ -226,3 +226,29 @@
 2025-05-31 13:25:15,301 - src.street_food_classifier - INFO -   Classes: 20
 2025-05-31 13:25:15,301 - src.street_food_classifier - INFO -   Training samples: 2939
 2025-05-31 13:25:15,301 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 15:23:20,192 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 15:23:20,192 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 15:23:20,192 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 15:23:20,192 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 15:23:39,287 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 15:23:39,287 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 15:23:39,287 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 15:23:39,287 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 15:24:20,287 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 15:24:20,287 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 15:24:20,287 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 15:24:20,289 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 15:24:21,201 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 15:24:21,202 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 15:24:21,202 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 15:24:21,202 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 15:24:21,202 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 15:24:21,441 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 15:24:21,441 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 15:40:25,789 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 15:40:25,789 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 15:40:41,589 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 15:40:41,589 - src.street_food_classifier - INFO -   Accuracy: 0.8340
+2025-05-31 15:40:41,589 - src.street_food_classifier - INFO -   F1-Score: 0.8319
+2025-05-31 15:40:41,589 - src.street_food_classifier - INFO -   Loss: 0.5647
+2025-05-31 15:40:46,521 - src.street_food_classifier - INFO - Cleanup completed

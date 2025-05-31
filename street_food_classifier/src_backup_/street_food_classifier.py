@@ -153,96 +153,102 @@ class StreetFoodClassifier:
     
     def train(self, architecture: str = 'resnet18', pretrained: bool = True,
               save_results: bool = True, **kwargs) -> Dict:
-        """Training with clean, professional visualizations."""
+        """
+        Startet das komplette Training.
         
-        # ... (existing training code until the end) ...
+        Args:
+            architecture: Model-Architektur
+            pretrained: Ob vortrainierte Gewichte verwendet werden sollen
+            save_results: Ob Ergebnisse automatisch gespeichert werden sollen
+            **kwargs: Zusätzliche Model-Parameter
+            
+        Returns:
+            Training history
+            
+        Example:
+            >>> history = classifier.train('resnet18', pretrained=True)
+            >>> print("Training completed!")
+        """
+        # Setup falls noch nicht geschehen
+        if self.model is None:
+            self.setup_model(architecture, pretrained, **kwargs)
         
-        # === REPLACE THIS SECTION ===
-        # OLD VERSION (BROKEN):
-        # if save_results:
-        #     self.save_training_results()
-        # 
-        # # Visualisierung der Training History
-        # self.visualizer.plot_history(self.training_history, save=True, show=True)
+        self.logger.info("Starting training process...")
         
-        # NEW VERSION (CLEAN):
+        # Training durchführen
+        self.training_history = self.trainer.fit(self.train_loader, self.val_loader)
+        self.is_trained = True
+        
+        # Predictor für spätere Verwendung erstellen
+        _, val_transform = self.data_manager.get_transforms()
+        self.predictor = Predictor(
+            self.model, self.class_names, self.device, self.config, val_transform
+        )
+        
+        # Ergebnisse speichern falls gewünscht
         if save_results:
             self.save_training_results()
-    
-        # Professional visualization - only working plots
-        self.logger.info("Creating training visualizations...")
         
-        try:
-            # Training history plot (always works)
-            history_plot = self.visualizer.plot_training_history(
-                self.training_history,
-                save=True,
-                show=True,
-                save_name=f"{architecture}_training_history.png"
-            )
-            
-            self.logger.info(f"Training visualization saved: {history_plot}")
-            
-        except Exception as e:
-            self.logger.warning(f"Visualization creation failed: {e}")
-            print("⚠️ Visualization skipped - training data saved successfully")
-        
-        print("\n✅ TRAINING COMPLETED SUCCESSFULLY!")
-        print("📊 For comprehensive analysis, use: python -c 'from ml_control_center import ml; ml.dashboard()'")
+        # Visualisierung der Training History
+        self.visualizer.plot_history(self.training_history, save=True, show=True)
         
         self.logger.info("Training process completed!")
         return self.training_history
-
     
     def evaluate(self, model_path: Optional[str] = None, 
                 create_visualizations: bool = True) -> Dict:
-        """Evaluation with professional visualization system."""
+        """
+        Evaluiert das trainierte Model.
         
-        # ... (existing evaluation code until visualization section) ...
-        
-        # === REPLACE VISUALIZATION SECTION ===
-        # OLD VERSION (PROBLEMATIC):
-        # if create_visualizations:
-        #     # Confusion Matrix
-        #     self.visualizer.plot_confusion_matrix(...)
-        #     
-        #     # Performance Dashboard falls Training History verfügbar
-        #     if self.training_history is not None:
-        #         self.visualizer.plot_model_performance_summary(...)
-        
-        # NEW VERSION (PROFESSIONAL):
-        if create_visualizations:
-            self.logger.info("Creating evaluation visualizations...")
+        Args:
+            model_path: Pfad zu geladenem Model (optional)
+            create_visualizations: Ob Visualisierungen erstellt werden sollen
             
-            try:
-                # Confusion Matrix (always reliable)
-                cm_plot = self.visualizer.plot_confusion_matrix(
+        Returns:
+            Evaluation-Ergebnisse
+            
+        Example:
+            >>> results = classifier.evaluate()
+            >>> print(f"Validation Accuracy: {results['accuracy']:.4f}")
+        """
+        # Model laden falls Pfad angegeben
+        if model_path is not None:
+            self.load_model(model_path)
+        
+        # Sicherstellen dass Model bereit ist
+        if self.trainer is None:
+            raise RuntimeError("Model not trained or loaded yet! Call train() or load_model() first.")
+        
+        self.logger.info("Evaluating model...")
+        
+        # Validation-Evaluation
+        val_results = self.trainer.evaluate(self.val_loader, return_predictions=True)
+        
+        self.logger.info("Evaluation Results:")
+        self.logger.info(f"  Accuracy: {val_results['accuracy']:.4f}")
+        self.logger.info(f"  F1-Score: {val_results['f1']:.4f}")
+        self.logger.info(f"  Loss: {val_results['loss']:.4f}")
+        
+        # Visualisierungen erstellen
+        if create_visualizations:
+            # Confusion Matrix
+            self.visualizer.plot_confusion_matrix(
+                val_results['labels'],
+                val_results['predictions'],
+                self.class_names,
+                title="Validation Results",
+                save=True
+            )
+            
+            # Performance Dashboard falls Training History verfügbar
+            if self.training_history is not None:
+                self.visualizer.plot_model_performance_summary(
+                    self.training_history,
                     val_results['labels'],
                     val_results['predictions'],
                     self.class_names,
-                    title="Validation Results",
-                    save=True,
-                    show=True
+                    save=True
                 )
-                
-                # Comprehensive dashboard if training history available
-                if self.training_history is not None:
-                    dashboard_plot = self.visualizer.create_comprehensive_dashboard(
-                        training_history=self.training_history,
-                        evaluation_results=val_results,
-                        class_names=self.class_names,
-                        save=True,
-                        show=False  # Don't show during evaluation
-                    )
-                    
-                    if dashboard_plot:
-                        self.logger.info(f"Comprehensive dashboard created: {dashboard_plot}")
-                
-                self.logger.info("Evaluation visualizations completed")
-                
-            except Exception as e:
-                self.logger.warning(f"Visualization creation failed: {e}")
-                print("⚠️ Visualizations skipped - evaluation data available")
         
         return val_results
     

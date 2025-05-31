@@ -1,0 +1,25 @@
+{
+  "experiment_id": "3model_comparison_20250531_152420",
+  "timestamp": "2025-05-31T15:40:46.522206",
+  "results": {
+    "resnet18": {
+      "accuracy": 0.8340136054421768,
+      "f1_score": 0.831919484555901,
+      "loss": 0.5647122338110087,
+      "training_time_minutes": 16.091728218396504,
+      "parameters": 11186772,
+      "model_size_mb": 42.67414855957031,
+      "experiment_id": "resnet18_20ep_1748698825"
+    },
+    "resnet50": null,
+    "efficientnet_b0": null
+  },
+  "models_tested": [
+    "resnet18",
+    "resnet50",
+    "efficientnet_b0"
+  ],
+  "successful_models": [
+    "resnet18"
+  ]
+}
