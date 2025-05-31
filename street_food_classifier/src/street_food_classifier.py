@@ -153,64 +153,164 @@ class StreetFoodClassifier:
     
     def train(self, architecture: str = 'resnet18', pretrained: bool = True,
               save_results: bool = True, **kwargs) -> Dict:
-        """Training with clean, professional visualizations."""
+        """
+        Training with professional error handling and visualization.
         
-        # ... (existing training code until the end) ...
-        
-        # === REPLACE THIS SECTION ===
-        # OLD VERSION (BROKEN):
-        # if save_results:
-        #     self.save_training_results()
-        # 
-        # # Visualisierung der Training History
-        # self.visualizer.plot_history(self.training_history, save=True, show=True)
-        
-        # NEW VERSION (CLEAN):
-        if save_results:
-            self.save_training_results()
-    
-        # Professional visualization - only working plots
-        self.logger.info("Creating training visualizations...")
+        Args:
+            architecture: Model architecture to use
+            pretrained: Whether to use pretrained weights
+            save_results: Whether to save training results
+            **kwargs: Additional training parameters
+            
+        Returns:
+            Training history dictionary
+        """
+        self.logger.info(f"Starting training with {architecture}")
+        self.logger.info(f"Configuration: pretrained={pretrained}, save_results={save_results}")
         
         try:
-            # Training history plot (always works)
-            history_plot = self.visualizer.plot_training_history(
-                self.training_history,
-                save=True,
-                show=True,
-                save_name=f"{architecture}_training_history.png"
+            # Setup data if not already done
+            if self.num_classes is None:
+                self.logger.info("Setting up data...")
+                self.setup_data()
+            
+            # Setup model if not already done
+            if self.model is None:
+                self.logger.info(f"Setting up model: {architecture}")
+                self.setup_model(architecture=architecture, pretrained=pretrained, **kwargs)
+            
+            # Ensure we have data loaders
+            if self.train_loader is None or self.val_loader is None:
+                self.logger.info("Creating data loaders...")
+                (self.train_loader, self.val_loader, 
+                 self.num_classes, self.class_names) = self.data_manager.create_dataloaders()
+            
+            # Start training
+            self.logger.info("Starting training process...")
+            self.logger.info(f"Device: {self.device}")
+            self.logger.info(f"Epochs: {self.config.EPOCHS}")
+            self.logger.info(f"Batch size: {self.config.BATCH_SIZE}")
+            
+            # Training durchführen
+            self.training_history = self.trainer.train(
+                train_loader=self.train_loader,
+                val_loader=self.val_loader,
+                epochs=self.config.EPOCHS
             )
             
-            self.logger.info(f"Training visualization saved: {history_plot}")
+            # Training Status setzen
+            self.is_trained = True
+            
+            # Predictor für spätere Verwendung erstellen
+            if self.predictor is None:
+                _, val_transform = self.data_manager.get_transforms()
+                self.predictor = Predictor(
+                    self.model, self.class_names, self.device, self.config, val_transform
+                )
+            
+            self.logger.info("Training completed successfully!")
+            
+            # Ergebnisse speichern
+            if save_results:
+                self.logger.info("Saving training results...")
+                try:
+                    self.save_training_results()
+                    self.logger.info("Training results saved")
+                except Exception as e:
+                    self.logger.warning(f"Failed to save training results: {e}")
+            
+            # Professional visualization - only working plots
+            self.logger.info("Creating training visualizations...")
+            
+            try:
+                # Training history plot (always works)
+                history_plot = self.visualizer.plot_training_history(
+                    self.training_history,
+                    save=True,
+                    show=True,
+                    save_name=f"{architecture}_training_history.png"
+                )
+                
+                if history_plot:
+                    self.logger.info(f"Training visualization saved: {history_plot}")
+                
+            except Exception as e:
+                self.logger.warning(f"Visualization creation failed: {e}")
+                print("⚠️ Visualization skipped - training data saved successfully")
+            
+            # Training summary
+            if self.training_history:
+                final_train_loss = self.training_history['train']['loss'][-1]
+                final_val_loss = self.training_history['val']['loss'][-1]
+                
+                if 'accuracy' in self.training_history['train']:
+                    final_train_acc = self.training_history['train']['accuracy'][-1]
+                    final_val_acc = self.training_history['val']['accuracy'][-1]
+                    
+                    print(f"\n✅ TRAINING COMPLETED SUCCESSFULLY!")
+                    print(f"📊 Final Results:")
+                    print(f"   Train Loss: {final_train_loss:.4f} | Train Acc: {final_train_acc:.4f}")
+                    print(f"   Val Loss: {final_val_loss:.4f} | Val Acc: {final_val_acc:.4f}")
+                else:
+                    print(f"\n✅ TRAINING COMPLETED SUCCESSFULLY!")
+                    print(f"📊 Final Results:")
+                    print(f"   Train Loss: {final_train_loss:.4f}")
+                    print(f"   Val Loss: {final_val_loss:.4f}")
+            
+            print("📊 For comprehensive analysis, use ml.evaluate() or ml.status()")
+            
+            self.logger.info("Training process completed!")
+            return self.training_history
             
         except Exception as e:
-            self.logger.warning(f"Visualization creation failed: {e}")
-            print("⚠️ Visualization skipped - training data saved successfully")
-        
-        print("\n✅ TRAINING COMPLETED SUCCESSFULLY!")
-        print("📊 For comprehensive analysis, use: python -c 'from ml_control_center import ml; ml.dashboard()'")
-        
-        self.logger.info("Training process completed!")
-        return self.training_history
-
+            self.logger.error(f"Training failed: {e}")
+            self.is_trained = False
+            
+            # Detailed error information
+            import traceback
+            self.logger.error(f"Training error traceback:\n{traceback.format_exc()}")
+            
+            # Try to provide helpful error message
+            if "CUDA out of memory" in str(e):
+                print("❌ CUDA out of memory! Try reducing batch size in config")
+            elif "No such file or directory" in str(e):
+                print("❌ Data files not found! Check your data paths in config")
+            elif "dimension mismatch" in str(e):
+                print("❌ Model dimension error! Check num_classes and data compatibility")
+            else:
+                print(f"❌ Training error: {e}")
+            
+            raise e
     
     def evaluate(self, model_path: Optional[str] = None, 
                 create_visualizations: bool = True) -> Dict:
-        """Evaluation with professional visualization system."""
+        """
+        Evaluation with professional visualization system.
+        """
+        self.logger.info("Starting evaluation...")
         
-        # ... (existing evaluation code until visualization section) ...
+        # Load model if path provided
+        if model_path is not None:
+            self.logger.info(f"Loading model from: {model_path}")
+            self.load_model(model_path)
         
-        # === REPLACE VISUALIZATION SECTION ===
-        # OLD VERSION (PROBLEMATIC):
-        # if create_visualizations:
-        #     # Confusion Matrix
-        #     self.visualizer.plot_confusion_matrix(...)
-        #     
-        #     # Performance Dashboard falls Training History verfügbar
-        #     if self.training_history is not None:
-        #         self.visualizer.plot_model_performance_summary(...)
+        # Check if model is ready
+        if self.model is None:
+            raise RuntimeError("No model available for evaluation! Train a model or provide model_path.")
         
-        # NEW VERSION (PROFESSIONAL):
+        # Ensure data is loaded
+        if self.train_loader is None or self.val_loader is None:
+            self.setup_data()
+        
+        # Perform evaluation
+        self.logger.info("Running validation...")
+        val_results = self.trainer.evaluate(self.val_loader)
+        
+        self.logger.info("Evaluation completed")
+        self.logger.info(f"Validation Accuracy: {val_results['accuracy']:.4f}")
+        self.logger.info(f"Validation F1-Score: {val_results['f1']:.4f}")
+        
+        # Professional visualization
         if create_visualizations:
             self.logger.info("Creating evaluation visualizations...")
             
@@ -345,72 +445,6 @@ class StreetFoodClassifier:
             self, model_name, save_train=True, save_val=True
         )
     
-    def compare_with_saved_models(self, saved_model_paths: list) -> str:
-        """
-        Vergleicht aktuelles Model mit gespeicherten Models.
-        
-        Args:
-            saved_model_paths: Liste von Pfaden zu gespeicherten Models
-            
-        Returns:
-            Pfad zum Vergleichsplot
-            
-        Example:
-            >>> models = ["model1.pth", "model2.pth"]
-            >>> plot_path = classifier.compare_with_saved_models(models)
-        """
-        if not self.is_trained:
-            raise RuntimeError("Model not trained yet! Call train() first.")
-        
-        # Aktuelle Ergebnisse speichern
-        train_path, val_path = self.save_training_results("current_model")
-        
-        # Alle Ergebnisdateien sammeln
-        result_files = [val_path]  # Aktuelle Validation-Ergebnisse
-        
-        # Gespeicherte Models laden und evaluieren
-        from .evaluation import StandaloneModelEvaluator
-        evaluator = StandaloneModelEvaluator(self.config)
-        
-        for model_path in saved_model_paths:
-            model_name = Path(model_path).stem
-            results = evaluator.evaluate_saved_model(
-                model_path, model_name, save_results=True, visualize=False
-            )
-            if 'saved_files' in results and 'validation' in results['saved_files']:
-                result_files.append(results['saved_files']['validation'])
-        
-        # Vergleichsplot erstellen
-        return self.evaluation_workflow.compare_models(result_files)
-    
-    def create_comprehensive_report(self, report_name: str = "full_analysis") -> str:
-        """
-        Erstellt umfassenden Analyse-Report.
-        
-        Args:
-            report_name: Name des Reports
-            
-        Returns:
-            Pfad zum Report-Verzeichnis
-            
-        Example:
-            >>> report_path = classifier.create_comprehensive_report("final_analysis")
-            >>> print(f"Report created: {report_path}")
-        """
-        if not self.is_trained:
-            raise RuntimeError("Model not trained yet! Call train() first.")
-        
-        # Ergebnisse speichern
-        train_path, val_path = self.save_training_results(f"{report_name}_model")
-        
-        # Report erstellen
-        return self.evaluation_workflow.create_evaluation_report(
-            [train_path, val_path],
-            report_name=report_name,
-            include_individual_plots=True,
-            include_comparison=False  # Nur ein Model
-        )
-    
     def get_model_summary(self) -> Dict:
         """
         Gibt detaillierte Model-Zusammenfassung zurück.
@@ -457,211 +491,6 @@ class StreetFoodClassifier:
             'batch_size': self.config.BATCH_SIZE,
             'image_size': self.config.IMG_SIZE
         }
-    
-    def export_model_for_deployment(self, output_path: str, 
-                                  include_metadata: bool = True) -> str:
-        """
-        Exportiert Model für Deployment.
-        
-        Args:
-            output_path: Pfad für exportiertes Model
-            include_metadata: Ob Metadaten eingeschlossen werden sollen
-            
-        Returns:
-            Pfad zum exportierten Model
-            
-        Example:
-            >>> model_path = classifier.export_model_for_deployment("deployed_model.pth")
-        """
-        if self.model is None:
-            raise RuntimeError("Model not created yet! Call train() or load_model() first.")
-        
-        # Metadaten sammeln
-        metadata = {}
-        if include_metadata:
-            metadata = {
-                'class_names': self.class_names,
-                'num_classes': self.num_classes,
-                'image_size': self.config.IMG_SIZE,
-                'model_architecture': self.model.__class__.__name__,
-                'confidence_threshold': getattr(self.config, 'PREDICTION_THRESHOLD', 0.5),
-                'export_timestamp': time.time()
-            }
-            
-            if self.is_trained:
-                metadata.update({
-                    'best_accuracy': getattr(self.trainer, 'best_accuracy', None),
-                    'best_f1': getattr(self.trainer, 'best_f1', None),
-                    'best_loss': getattr(self.trainer, 'best_loss', None)
-                })
-        
-        # Model speichern
-        return self.model_manager.save_model(
-            self.model, 
-            output_path, 
-            save_full_model=False,
-            metadata=metadata
-        )
-    
-    def quick_test(self, test_images: list, show_results: bool = True) -> list:
-        """
-        Schneller Test mit einer Liste von Bildern.
-        
-        Args:
-            test_images: Liste von Bildpfaden
-            show_results: Ob Ergebnisse ausgegeben werden sollen
-            
-        Returns:
-            Liste von Prediction-Ergebnissen
-            
-        Example:
-            >>> test_imgs = ["test1.jpg", "test2.jpg"]
-            >>> results = classifier.quick_test(test_imgs)
-        """
-        if self.predictor is None:
-            raise RuntimeError("Model not ready for prediction! Call train() or load_model() first.")
-        
-        results = self.predict_batch(test_images, show_progress=False)
-        
-        if show_results:
-            print(f"\n{'='*60}")
-            print("QUICK TEST RESULTS")
-            print(f"{'='*60}")
-            
-            for result in results:
-                file_name = Path(result['file']).name
-                confidence_indicator = "✓" if result['is_confident'] else "?"
-                
-                print(f"{confidence_indicator} {file_name:<20} -> {result['class_name']:<15} "
-                      f"(confidence: {result['confidence']:.3f})")
-            
-            # Summary
-            confident_count = sum(1 for r in results if r['is_confident'])
-            print(f"\nSummary: {confident_count}/{len(results)} confident predictions")
-            print(f"{'='*60}")
-        
-        return results
-    
-    def interactive_prediction(self) -> None:
-        """
-        Startet interaktive Prediction-Session.
-        
-        Example:
-            >>> classifier.interactive_prediction()
-            # Startet interaktive Session für Bildpfad-Eingabe
-        """
-        if self.predictor is None:
-            raise RuntimeError("Model not ready for prediction! Call train() or load_model() first.")
-        
-        print(f"\n{'='*60}")
-        print("INTERACTIVE PREDICTION MODE")
-        print(f"{'='*60}")
-        print("Enter image path (or 'quit' to exit):")
-        
-        while True:
-            try:
-                user_input = input("\nImage path: ").strip()
-                
-                if user_input.lower() in ['quit', 'exit', 'q']:
-                    break
-                
-                if not user_input:
-                    continue
-                
-                # Prediction durchführen
-                result = self.predict(user_input)
-                
-                # Ergebnis anzeigen
-                confidence_indicator = "✓" if result['is_confident'] else "?"
-                print(f"\n{confidence_indicator} Prediction: {result['class_name']}")
-                print(f"  Confidence: {result['confidence']:.3f}")
-                
-                # Top-3 Predictions anzeigen
-                print(f"  Top 3 predictions:")
-                for i, pred in enumerate(result['top_predictions'][:3], 1):
-                    print(f"    {i}. {pred['class_name']}: {pred['probability']:.3f}")
-                
-            except KeyboardInterrupt:
-                break
-            except Exception as e:
-                print(f"Error: {e}")
-        
-        print("\nInteractive session ended.")
-    
-    def benchmark_performance(self, test_data_path: str, 
-                            num_samples: Optional[int] = None) -> Dict:
-        """
-        Führt Performance-Benchmark durch.
-        
-        Args:
-            test_data_path: Pfad zu Test-Daten
-            num_samples: Anzahl Samples für Benchmark (None = alle)
-            
-        Returns:
-            Benchmark-Ergebnisse
-            
-        Example:
-            >>> benchmark = classifier.benchmark_performance("test_data/")
-            >>> print(f"Speed: {benchmark['images_per_second']:.1f} imgs/sec")
-        """
-        if self.predictor is None:
-            raise RuntimeError("Model not ready for prediction! Call train() or load_model() first.")
-        
-        from .inference import BatchPredictor
-        import time
-        
-        batch_predictor = BatchPredictor(self.model, self.class_names, self.device, self.config)
-        
-        self.logger.info(f"Starting performance benchmark on {test_data_path}")
-        
-        start_time = time.time()
-        
-        # Batch-Processing für Benchmark
-        results = batch_predictor.process_large_dataset(
-            test_data_path,
-            batch_size=self.config.BATCH_SIZE * 2,  # Größere Batches für Speed
-            save_intermediate=False
-        )
-        
-        end_time = time.time()
-        
-        # Benchmark-Metriken berechnen
-        total_time = end_time - start_time
-        num_images = results['summary']['total_images']
-        
-        if num_samples and num_images > num_samples:
-            # Nur subset verwenden
-            scale_factor = num_samples / num_images
-            total_time *= scale_factor
-            num_images = num_samples
-        
-        benchmark_results = {
-            'total_images': num_images,
-            'total_time_seconds': total_time,
-            'images_per_second': num_images / total_time,
-            'average_time_per_image_ms': (total_time / num_images) * 1000,
-            'device': str(self.device),
-            'batch_size': self.config.BATCH_SIZE * 2,
-            'model_architecture': self.model.__class__.__name__,
-            'accuracy_metrics': {
-                'confident_percentage': results['summary']['confident_percentage'],
-                'average_confidence': results['summary']['average_confidence']
-            }
-        }
-        
-        # Benchmark-Report ausgeben
-        print(f"\n{'='*60}")
-        print("PERFORMANCE BENCHMARK RESULTS")
-        print(f"{'='*60}")
-        print(f"Images processed: {benchmark_results['total_images']}")
-        print(f"Total time: {benchmark_results['total_time_seconds']:.2f} seconds")
-        print(f"Speed: {benchmark_results['images_per_second']:.1f} images/second")
-        print(f"Avg time per image: {benchmark_results['average_time_per_image_ms']:.1f} ms")
-        print(f"Device: {benchmark_results['device']}")
-        print(f"Confident predictions: {benchmark_results['accuracy_metrics']['confident_percentage']:.1f}%")
-        print(f"{'='*60}")
-        
-        return benchmark_results
     
     def cleanup(self) -> None:
         """

@@ -219,3 +219,7 @@ class ProfessionalVisualizer:
         """Placeholder for comprehensive dashboard."""
         print("📊 Comprehensive dashboard available separately")
         return None
+
+
+# Backward compatibility alias
+Visualizer = ProfessionalVisualizer
