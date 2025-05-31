@@ -1,0 +1,15 @@
+{
+  "experiment_id": "3model_comparison_20250531_132547",
+  "timestamp": "2025-05-31T13:25:47.123315",
+  "results": {
+    "resnet18": null,
+    "resnet50": null,
+    "efficientnet_b0": null
+  },
+  "models_tested": [
+    "resnet18",
+    "resnet50",
+    "efficientnet_b0"
+  ],
+  "successful_models": []
+}

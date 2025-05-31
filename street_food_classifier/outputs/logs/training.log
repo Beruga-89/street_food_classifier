@@ -1,0 +1,228 @@
+2025-05-31 08:27:59,272 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:27:59,272 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:27:59,272 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:29:23,784 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:29:23,784 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:29:23,784 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:30:11,254 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:30:11,254 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:30:11,254 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:30:58,740 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:30:58,740 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:30:58,740 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:31:06,170 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:31:06,170 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:31:06,170 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:31:23,322 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 08:31:43,950 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 08:31:43,950 - src.street_food_classifier - INFO -   Classes: 1
+2025-05-31 08:31:43,950 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 08:31:43,950 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 08:31:43,950 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:36:34,198 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:36:34,370 - src.street_food_classifier - INFO - Setting up model: resnet50
+2025-05-31 08:36:37,967 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 08:43:32,546 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:43:32,547 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:43:32,547 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:43:32,547 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 08:43:33,621 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 08:43:33,621 - src.street_food_classifier - INFO -   Classes: 1
+2025-05-31 08:43:33,621 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 08:43:33,621 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 08:46:57,465 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:46:59,905 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:46:59,905 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:46:59,905 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:46:59,905 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 08:47:00,960 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 08:47:00,960 - src.street_food_classifier - INFO -   Classes: 1
+2025-05-31 08:47:00,960 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 08:47:00,960 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 08:47:38,171 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:48:12,286 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:48:20,083 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:48:20,248 - src.street_food_classifier - INFO - Setting up model: resnet50
+2025-05-31 08:48:20,614 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 08:51:00,942 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:51:00,942 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:51:00,942 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:51:00,943 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 08:51:02,020 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 08:51:02,020 - src.street_food_classifier - INFO -   Classes: 1
+2025-05-31 08:51:02,021 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 08:51:02,021 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 08:51:02,021 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:51:02,256 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 08:51:02,257 - src.street_food_classifier - INFO - Setting up model: resnet50
+2025-05-31 08:51:02,596 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 08:51:02,598 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 08:51:02,708 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 08:51:58,250 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:51:58,251 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:51:58,251 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:51:58,252 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 08:51:59,168 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 08:51:59,168 - src.street_food_classifier - INFO -   Classes: 1
+2025-05-31 08:51:59,168 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 08:51:59,168 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 08:51:59,168 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 08:51:59,333 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 08:51:59,334 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 08:51:59,458 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 08:58:38,424 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 08:58:38,424 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 08:58:38,424 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 08:58:38,425 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 08:58:39,331 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 08:58:39,331 - src.street_food_classifier - INFO -   Classes: 1
+2025-05-31 08:58:39,331 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 08:58:39,331 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 08:58:39,332 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 08:58:39,500 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 08:58:39,501 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 09:03:26,792 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 09:03:26,793 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 09:03:26,793 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 09:03:26,793 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 09:03:38,806 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 09:03:38,806 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 09:03:38,806 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 09:03:38,806 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 09:03:38,807 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 09:03:39,018 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 09:03:39,021 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 09:19:53,779 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 09:19:53,781 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 09:20:11,694 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 09:20:11,694 - src.street_food_classifier - INFO -   Accuracy: 0.8816
+2025-05-31 09:20:11,694 - src.street_food_classifier - INFO -   F1-Score: 0.8788
+2025-05-31 09:20:11,694 - src.street_food_classifier - INFO -   Loss: 0.4333
+2025-05-31 09:43:44,414 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 09:43:44,414 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 09:43:44,414 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 09:43:44,414 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 09:43:45,454 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 09:43:45,454 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 09:43:45,455 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 09:43:45,455 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 09:43:45,455 - src.street_food_classifier - INFO - Setting up model: efficientnet_b0
+2025-05-31 09:43:45,716 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 09:43:45,719 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 09:59:47,308 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 09:59:47,308 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 10:00:04,109 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 10:00:04,109 - src.street_food_classifier - INFO -   Accuracy: 0.8816
+2025-05-31 10:00:04,109 - src.street_food_classifier - INFO -   F1-Score: 0.8788
+2025-05-31 10:00:04,109 - src.street_food_classifier - INFO -   Loss: 0.4333
+2025-05-31 10:00:04,136 - src.street_food_classifier - INFO - Cleanup completed
+2025-05-31 10:00:04,136 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 10:00:04,357 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 10:00:04,358 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 10:11:40,120 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 10:11:40,120 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 10:11:56,305 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 10:11:56,305 - src.street_food_classifier - INFO -   Accuracy: 0.8449
+2025-05-31 10:11:56,305 - src.street_food_classifier - INFO -   F1-Score: 0.8441
+2025-05-31 10:11:56,305 - src.street_food_classifier - INFO -   Loss: 0.5251
+2025-05-31 10:11:56,309 - src.street_food_classifier - INFO - Cleanup completed
+2025-05-31 10:11:56,309 - src.street_food_classifier - INFO - Setting up model: resnet50
+2025-05-31 10:11:56,710 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 10:11:56,712 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 10:45:46,214 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 10:45:46,215 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 10:46:04,127 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 10:46:04,127 - src.street_food_classifier - INFO -   Accuracy: 0.8803
+2025-05-31 10:46:04,127 - src.street_food_classifier - INFO -   F1-Score: 0.8789
+2025-05-31 10:46:04,127 - src.street_food_classifier - INFO -   Loss: 0.4669
+2025-05-31 10:46:04,619 - src.street_food_classifier - INFO - Cleanup completed
+2025-05-31 10:46:04,705 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 10:46:04,705 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 10:46:04,705 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 10:46:04,705 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 10:46:05,881 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 10:46:05,881 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 10:46:05,881 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 10:46:05,881 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 10:46:05,881 - src.street_food_classifier - INFO - Setting up model: resnet50
+2025-05-31 10:46:06,317 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 10:46:06,318 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 11:18:49,790 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 11:18:49,791 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 11:19:07,570 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 11:19:07,570 - src.street_food_classifier - INFO -   Accuracy: 0.8803
+2025-05-31 11:19:07,570 - src.street_food_classifier - INFO -   F1-Score: 0.8783
+2025-05-31 11:19:07,570 - src.street_food_classifier - INFO -   Loss: 0.4777
+2025-05-31 12:07:13,222 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 12:07:13,222 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 12:07:13,222 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 12:07:13,222 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 12:07:14,176 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 12:07:14,176 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 12:07:14,176 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 12:07:14,176 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 12:07:41,299 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 12:07:41,299 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 12:07:41,299 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 12:07:41,299 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 12:07:42,192 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 12:07:42,192 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 12:07:42,192 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 12:07:42,192 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 12:10:04,676 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 12:10:04,676 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 12:10:04,676 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 12:10:04,676 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 12:10:05,573 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 12:10:05,573 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 12:10:05,573 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 12:10:05,573 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 12:10:05,573 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 12:10:05,747 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 12:10:05,747 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 12:13:02,961 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 12:13:04,619 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 12:13:04,619 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 12:13:04,619 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 12:13:04,619 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 12:13:05,649 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 12:13:05,649 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 12:13:05,649 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 12:13:05,649 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 12:13:05,649 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 12:13:05,820 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 12:13:05,820 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 12:16:09,460 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 12:16:09,460 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 12:16:09,460 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 12:16:09,460 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 12:16:10,384 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 12:16:10,384 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 12:16:10,384 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 12:16:10,384 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 12:28:45,327 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 12:28:45,327 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 12:28:45,327 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 12:28:45,327 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 12:28:46,365 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 12:28:46,365 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 12:28:46,365 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 12:28:46,365 - src.street_food_classifier - INFO -   Validation samples: 735
+2025-05-31 12:28:46,365 - src.street_food_classifier - INFO - Setting up model: resnet18
+2025-05-31 12:28:46,541 - src.street_food_classifier - INFO - Model setup completed
+2025-05-31 12:28:46,541 - src.street_food_classifier - INFO - Starting training process...
+2025-05-31 12:45:41,370 - src.street_food_classifier - INFO - Training process completed!
+2025-05-31 12:45:41,370 - src.street_food_classifier - INFO - Evaluating model...
+2025-05-31 12:45:58,953 - src.street_food_classifier - INFO - Evaluation Results:
+2025-05-31 12:45:58,953 - src.street_food_classifier - INFO -   Accuracy: 0.8340
+2025-05-31 12:45:58,953 - src.street_food_classifier - INFO -   F1-Score: 0.8319
+2025-05-31 12:45:58,953 - src.street_food_classifier - INFO -   Loss: 0.5647
+2025-05-31 12:46:04,782 - src.street_food_classifier - INFO - Cleanup completed
+2025-05-31 13:25:14,222 - src.street_food_classifier - INFO - StreetFoodClassifier initialized
+2025-05-31 13:25:14,223 - src.street_food_classifier - INFO - Device: cuda
+2025-05-31 13:25:14,223 - src.street_food_classifier - INFO - Random seed: 42
+2025-05-31 13:25:14,223 - src.street_food_classifier - INFO - Setting up data management...
+2025-05-31 13:25:15,301 - src.street_food_classifier - INFO - Data setup completed:
+2025-05-31 13:25:15,301 - src.street_food_classifier - INFO -   Classes: 20
+2025-05-31 13:25:15,301 - src.street_food_classifier - INFO -   Training samples: 2939
+2025-05-31 13:25:15,301 - src.street_food_classifier - INFO -   Validation samples: 735
