@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Neural_Networks/Kaggle/street_food_classifier/mlflow/742854679818458359/565f1275c7044940912752493e856a79/artifacts
+end_time: 1748870166660
+entry_point_name: ''
+experiment_id: '742854679818458359'
+lifecycle_stage: active
+run_id: 565f1275c7044940912752493e856a79
+run_name: test_run
+run_uuid: 565f1275c7044940912752493e856a79
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748870166593
+status: 3
+tags: []
+user_id: clone
